@@ -71,6 +71,8 @@ public class MaskingOutputStream extends OutputStream {
             this.delegate.write(outString.getBytes());
         }        
 
+        this.delegate.write(b, off + preamble_idx, consoleNoteLen);
+
         if (rightStringLen > 0) {
             String right = new String(b, off + postamble_idx + postamble_length, rightStringLen);
             String outString = right.replaceAll(regexPattern, replacementString);

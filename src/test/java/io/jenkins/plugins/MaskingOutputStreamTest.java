@@ -38,6 +38,8 @@ public class MaskingOutputStreamTest {
         {"(+aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1)", "(****************************************)"},
         {"+aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 This is an input string", "**************************************** This is an input string"},          
         {"This is an input string +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1", "This is an input string ****************************************"},
+        {"This is an input string +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 repeat +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1", 
+            "This is an input string **************************************** repeat ****************************************"},
         
 
         {"+aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1", "****************************************"},
@@ -60,7 +62,24 @@ public class MaskingOutputStreamTest {
         {"This is an input string+aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa", "This is an input string+aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa"},
         {"This is an input string +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa", "This is an input string +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa"},
         {"This is an input string+aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa ", "This is an input string+aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa "},
-        // {"This is an input string", "This is an input string"},
+        {"This is an input string", "This is an input string"},
+
+        // string with pre/postambles
+        
+        
+        {hudson.console.ConsoleNote.PREAMBLE_STR + " +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 " + hudson.console.ConsoleNote.POSTAMBLE_STR + "This is an input string", 
+            hudson.console.ConsoleNote.PREAMBLE_STR + " +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 " + hudson.console.ConsoleNote.POSTAMBLE_STR + "This is an input string"},
+
+
+        {hudson.console.ConsoleNote.PREAMBLE_STR + " +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 " + hudson.console.ConsoleNote.POSTAMBLE_STR + "This is an input string with console note and secret +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 ",
+            hudson.console.ConsoleNote.PREAMBLE_STR + " +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 " + hudson.console.ConsoleNote.POSTAMBLE_STR + "This is an input string with console note and secret **************************************** "},       
+
+       {"    "  + hudson.console.ConsoleNote.PREAMBLE_STR + " +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 " + hudson.console.ConsoleNote.POSTAMBLE_STR + "This is an input string with console note and secret +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 ",
+        "    "  + hudson.console.ConsoleNote.PREAMBLE_STR + " +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 " + hudson.console.ConsoleNote.POSTAMBLE_STR + "This is an input string with console note and secret **************************************** "},
+
+        {" +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 "  + hudson.console.ConsoleNote.PREAMBLE_STR + " +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 " + hudson.console.ConsoleNote.POSTAMBLE_STR + "This is an input string with console note and secret +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 ",
+        " **************************************** "  + hudson.console.ConsoleNote.PREAMBLE_STR + " +aaa1aA1a1aa1Aaa8AAa1aA1aAAaA1+aAaAa1Aa1 " + hudson.console.ConsoleNote.POSTAMBLE_STR + "This is an input string with console note and secret **************************************** "},       
+
        });
     }
 
@@ -78,4 +97,5 @@ public class MaskingOutputStreamTest {
         System.out.println(expected);
         Assert.assertEquals(expected, out);
     }
+
 }

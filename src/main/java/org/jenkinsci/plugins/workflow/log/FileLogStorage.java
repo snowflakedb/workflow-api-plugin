@@ -173,7 +173,7 @@ public final class FileLogStorage implements LogStorage {
         @Override public void write(@NonNull byte[] b) throws IOException {
             synchronized (FileLogStorage.this) {
                 checkId(id);
-                bos.write(b, 0, b.length);
+                bos.write(b);
             }
         }
         @Override public void write(@NonNull byte[] b, int off, int len) throws IOException {

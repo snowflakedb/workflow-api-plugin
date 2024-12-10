@@ -1,4 +1,4 @@
-package io.jenkins.plugins;
+package com.snowflake.jenkins.workflow_api;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

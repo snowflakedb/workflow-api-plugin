@@ -30,7 +30,6 @@ import hudson.console.AnnotatedLargeText;
 import hudson.console.ConsoleAnnotationOutputStream;
 import hudson.model.BuildListener;
 import hudson.model.TaskListener;
-import io.jenkins.plugins.MaskingOutputStream;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -56,6 +55,8 @@ import org.jenkinsci.plugins.workflow.graph.FlowNode;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.Beta;
 import org.kohsuke.stapler.framework.io.ByteBuffer;
+
+import com.snowflake.jenkins.workflow_api.MaskingOutputStream;
 
 /**
  * Simple implementation of log storage in a single file that maintains a side file with an index indicating where node transitions occur.

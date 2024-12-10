@@ -1,8 +1,7 @@
-package io.jenkins.plugins;
+package com.snowflake.jenkins.workflow_api;
 
 import org.junit.*;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 import org.junit.runner.RunWith;
 
 import java.io.ByteArrayOutputStream;

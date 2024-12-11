@@ -18,7 +18,7 @@ public class MaskingOutputStream extends OutputStream {
 
     public MaskingOutputStream(OutputStream delegate) {
 
-        LOGGER.log(Level.FINE, "MaskingOutputStream constructor called");
+        LOGGER.log(Level.INFO, "MaskingOutputStream constructor called");
         this.delegate = delegate;
     }
 
